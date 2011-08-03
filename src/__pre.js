@@ -1,0 +1,3 @@
+( function ( $, undefined ) {
+
+	var requestAnimationFrame;
