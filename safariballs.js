@@ -1,7 +1,5 @@
 ( function ( $, undefined ) {
 
-	var requestAnimationFrame;
-
 function Vector ( x, y, z ) {
 	if ( this === window ) {
 		return new Vector( x, y, z );
@@ -275,7 +273,7 @@ function Ball ( size ) {
 	size && ( this.size = Vector( size, size ) );
 }
 $.extend( true, Ball.prototype, {
-	size: Vector( 24, 24 ),
+	size: Vector( 20, 20 ),
 	tick: function ( dt ) {
 		// device's acceleration vector is Y-inverted relative to canvas
 		var a = this.engine.input.acceleration;
@@ -291,8 +289,7 @@ $.extend( true, Ball.prototype, {
 		} else if ( this.position.x > this.scene.size.x - this.size.x ) {
 			this.position.x = this.scene.size.x - this.size.x;
 			hitNormal = Vector(-1,0);
-		}
-		if ( this.position.y < this.size.y ) {
+		} else if ( this.position.y < this.size.y ) {
 			this.position.y = this.size.y;
 			hitNormal = Vector(0,1);
 		} else if ( this.position.y > this.scene.size.y - this.size.y ) {
